@@ -44,7 +44,7 @@ body {
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img,
@@ -922,6 +922,11 @@ h3 {
 .local {
   background: var(--bg-elevated);
   padding: clamp(4.5rem, 10vw, 7.5rem) 0;
+  overflow: visible;
+}
+
+.local .container {
+  overflow: visible;
 }
 
 .local__grid {
@@ -929,12 +934,15 @@ h3 {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: start;
-  width: min(100% - 2.5rem, var(--max));
-  margin-inline: auto;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .local__copy {
   min-width: 0;
+  max-width: 100%;
 }
 
 .local__copy .eyebrow {
@@ -943,9 +951,9 @@ h3 {
 
 .local__copy h2 {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: 0.01em;
   margin-bottom: 0;
   color: var(--text);
@@ -980,6 +988,7 @@ h3 {
   margin: 0;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   gap: 1.25rem;
   padding: 0.85rem 0;
   border-bottom: 1px solid rgba(201, 162, 39, 0.18);
@@ -989,12 +998,14 @@ h3 {
 
 .local__hours span {
   letter-spacing: 0.04em;
+  flex: 1 1 auto;
 }
 
 .local__hours b {
   color: var(--text);
   font-weight: 500;
   text-align: right;
+  flex: 0 0 auto;
 }
 
 .local__visual {
@@ -1036,9 +1047,9 @@ h3 {
 
 .local__map iframe {
   display: block;
-  width: 100%;
+  width: 100% !important;
   max-width: 100%;
-  height: 100%;
+  height: 100% !important;
   min-height: 280px;
   border: 0;
   filter: grayscale(0.2) contrast(1.05);
@@ -1098,12 +1109,8 @@ h3 {
 }
 
 @media (max-width: 560px) {
-  .local__grid {
-    width: min(100% - 2rem, var(--max));
-  }
-
   .local__copy h2 {
-    font-size: clamp(2rem, 10vw, 2.6rem);
+    font-size: clamp(1.9rem, 9vw, 2.4rem);
   }
 
   .local__facade {
