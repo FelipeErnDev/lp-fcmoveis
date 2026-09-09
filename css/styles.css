@@ -1,6 +1,6 @@
 /* ========================================
-   FC M?veis sob Medida — Landing Page
-   Paleta: grafite / preto + ?mbar dourado
+   FC Moveis sob Medida — Landing Page
+   Paleta: grafite / preto + ambar dourado
    ======================================== */
 
 :root {
@@ -926,9 +926,15 @@ h3 {
 
 .local__grid {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  width: min(100% - 2.5rem, var(--max));
+  margin-inline: auto;
+}
+
+.local__copy {
+  min-width: 0;
 }
 
 .local__copy .eyebrow {
@@ -942,6 +948,7 @@ h3 {
   line-height: 1.05;
   letter-spacing: 0.01em;
   margin-bottom: 0;
+  color: var(--text);
 }
 
 .local__address {
@@ -991,14 +998,17 @@ h3 {
 }
 
 .local__visual {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.9rem;
   width: 100%;
+  min-width: 0;
 }
 
 .local__facade {
   margin: 0;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--surface);
@@ -1006,6 +1016,7 @@ h3 {
 
 .local__facade img {
   width: 100%;
+  max-width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
@@ -1014,21 +1025,28 @@ h3 {
 .local__map {
   position: relative;
   width: 100%;
+  max-width: 100%;
   height: 360px;
   padding: 0.7rem;
+  box-sizing: border-box;
   background: var(--bg-soft);
   border: 1px solid rgba(201, 162, 39, 0.22);
+  overflow: hidden;
 }
 
 .local__map iframe {
+  display: block;
   width: 100%;
+  max-width: 100%;
   height: 100%;
+  min-height: 280px;
   border: 0;
   filter: grayscale(0.2) contrast(1.05);
 }
 
 .local__map-label {
   position: absolute;
+  z-index: 2;
   left: 1.6rem;
   bottom: 1.6rem;
   display: flex;
@@ -1039,6 +1057,7 @@ h3 {
   border: 1px solid var(--gold-line);
   color: var(--text);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .local__map-label img {
@@ -1047,6 +1066,7 @@ h3 {
   border-radius: 50%;
   object-fit: cover;
   background: #1a1a1a;
+  flex-shrink: 0;
 }
 
 .local__map-label span {
@@ -1078,6 +1098,10 @@ h3 {
 }
 
 @media (max-width: 560px) {
+  .local__grid {
+    width: min(100% - 2rem, var(--max));
+  }
+
   .local__copy h2 {
     font-size: clamp(2rem, 10vw, 2.6rem);
   }
@@ -1101,6 +1125,7 @@ h3 {
     width: 100%;
   }
 }
+
 
 .cta-final {
   position: relative;
